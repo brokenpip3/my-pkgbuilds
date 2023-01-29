@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      contents: write
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.create-pkg-list.outputs.matrix) }}
@@ -94,4 +95,3 @@ jobs:
             title: Update ${{ matrix.pkg }} to ${{ steps.latest.outputs.tag }}
             body: |
                Update ${{ matrix.pkg }} to ${{ steps.latest.outputs.tag }}
-               Upstream repo https://github.com/${{ matrix.repo }}
