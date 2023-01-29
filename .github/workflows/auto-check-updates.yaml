@@ -95,3 +95,4 @@ jobs:
             title: Update ${{ matrix.pkg }} to ${{ steps.latest.outputs.tag }}
             body: |
                Update ${{ matrix.pkg }} to ${{ steps.latest.outputs.tag }}
+               Upstream repo https://github.com/${{ matrix.repo }}

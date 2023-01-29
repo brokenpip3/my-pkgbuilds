@@ -10,6 +10,6 @@ This repo contains all the archlinux aur [packages](https://aur.archlinux.org/pa
 * [Auto update workflow](.github/workflows/auto-check-updates.yaml) that checks if the upstream version is changed (only the
   sources that are hosted on `github.com` atm) and in that case will try to
   build the package. If the packages builds successfully the flow will
-  automatically create a PR ([example](https://github.com/brokenpip3/my-pkgbuilds/pull/1)) for that single package.
+  automatically create a PR ([example](https://github.com/brokenpip3/my-pkgbuilds/pull/2)) for that single package.
 
 PRs are welcome!
