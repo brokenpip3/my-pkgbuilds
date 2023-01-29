@@ -1,0 +1,95 @@
+name: check-upstream-and-update-pkg
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [ "main" ]
+jobs:
+
+  create-pkg-list:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+    - uses: actions/checkout@v3
+    - id: matrix
+      run: |
+        script=$(./utils/make-matrix.sh)
+        echo "matrix=${script}" >> $GITHUB_OUTPUT
+
+  check-upstream:
+    needs: [ create-pkg-list]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.create-pkg-list.outputs.matrix) }}
+    container:
+      image: ghcr.io/brokenpip3/my-pkgbuilds:test
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: oprypin/find-latest-tag@v1
+        with:
+          repository: ${{ matrix.repo }}
+        id: latest
+        name: Check latest version
+
+      - name: Version diff
+        id: version
+        env:
+          LATEST: "${{ steps.latest.outputs.tag }}"
+          CURRENT: "${{ matrix.ver }}"
+        run: |
+              result=$(vercmp  "${LATEST//v}" "${CURRENT}")
+              [ "$result" -gt 0 ] && _result='true' || _result='false'
+              echo "build=${_result}" >> $GITHUB_ENV
+
+      - name: Update version and checksum
+        if: env.build == 'true'
+        working-directory: "packages/${{ matrix.pkg }}"
+        shell: bash
+        env:
+          LATEST: "${{ steps.latest.outputs.tag }}"
+        run: |
+          # List of external site that does not need the v
+          # in version
+          removev=("https://files.pythonhosted.org")
+          source PKGBUILD
+          for v in "${removev[@]}"; do
+            if [[ $source == $v* ]]; then
+              LATEST="${LATEST//v}"
+              break
+            # In case of proper source we can have a
+            # double "v" in version, so let's remove one
+            elif [[ $source == *"v$pkgver"* ]]; then
+              LATEST="${LATEST//v}"
+              break
+            fi
+          done
+          sed -i "s/pkgver=.*/pkgver=${LATEST}/" PKGBUILD
+          updpkgsums
+
+      - name: Build
+        if: env.build == 'true'
+        working-directory: "packages/${{ matrix.pkg }}"
+        run: |
+          sudo pacman -Syu --noconfirm
+          makepkg -s -o --noconfirm
+          makepkg -sc --noconfirm
+          makepkg --printsrcinfo > .SRCINFO
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        if: env.build == 'true'
+        with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            branch: update-${{ matrix.pkg }}
+            delete-branch: true
+            assignees: "brokenpip3"
+            labels: "auto-pr-${{ matrix.pkg }}"
+            commit-message: Update ${{ matrix.pkg }} to ${{ steps.latest.outputs.tag }}
+            title: Update ${{ matrix.pkg }} to ${{ steps.latest.outputs.tag }}
+            body: |
+               Update ${{ matrix.pkg }} to ${{ steps.latest.outputs.tag }}
+               Upstream repo https://github.com/${{ matrix.repo }}

@@ -1,0 +1,22 @@
+pkgbase = python-pylxd
+	pkgdesc = A library for interacting with the LXD REST API
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/lxc/pylxd
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-pbr
+	depends = python-six
+	depends = python-ws4py
+	depends = python-requests
+	depends = python-requests-unixsocket
+	depends = python-requests-toolbelt
+	depends = python-cryptography
+	depends = python-pyopenssl
+	optdepends = lxd: to use a local LXD server
+	source = python-pylxd-2.3.1.tar.gz::https://github.com/lxc/pylxd/archive/2.3.1.tar.gz
+	sha512sums = 665981e2a0f225a6457447783ef40c98309430f8e1ed95679637735b45a9e52f0eb0b0ddceb113ee6393885c34c904b3719ed1fe705bdf13f2ffd63b7712b129
+	b2sums = ecee70c9e051d19068f856d88b46a6d2612d0db81d6b9a4853968c9f699840019cd540bdea2386c7be460e8a8e7406656364247066468c41aba299a4d024a543
+
+pkgname = python-pylxd

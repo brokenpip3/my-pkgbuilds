@@ -1,0 +1,6 @@
+packages/*/*
+!utils/*
+!.gitignore
+!packages/*/PKGBUILD
+!packages/*/.SRCINFO
+!packages/*/*.install
