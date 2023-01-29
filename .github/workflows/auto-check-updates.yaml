@@ -21,6 +21,8 @@ jobs:
   check-upstream:
     needs: [ create-pkg-list]
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.create-pkg-list.outputs.matrix) }}
