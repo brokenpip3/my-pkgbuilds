@@ -30,7 +30,7 @@ jobs:
         id: changed-files-specific
         uses: tj-actions/changed-files@v35
         with:
-          files: "packages/${{ matrix.pkg }}/*"
+          files: packages/${{ matrix.pkg }}/*
       - name: Build
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         working-directory: "packages/${{ matrix.pkg }}"
