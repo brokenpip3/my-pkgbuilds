@@ -31,8 +31,8 @@ jobs:
       - name: Get changed files in the packages folder
         id: changed-files-specific
         uses: tj-actions/changed-files@v35
-        with:
-          path: packages/${{ matrix.pkg }}
+        #with:
+          #path: packages/${{ matrix.pkg }}
       - name: Build
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         working-directory: "packages/${{ matrix.pkg }}"
