@@ -3,6 +3,8 @@ name: check-pr
 on:
   workflow_dispatch:
   pull_request:
+    paths:
+      - 'packages/**'
 jobs:
 
   create-pkg-list:
