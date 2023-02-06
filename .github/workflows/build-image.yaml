@@ -6,6 +6,11 @@ on:
   - cron: "40 00 * * *"
   push:
     branches: [ "main" ]
+    paths:
+      - 'utils/**'
+  pull_request:
+    paths:
+      - 'utils/**'
 
 jobs:
   build-base-image:
