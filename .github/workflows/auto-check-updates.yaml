@@ -46,7 +46,7 @@ jobs:
           CURRENT: "${{ matrix.ver }}"
         run: |
               result=$(vercmp  "${LATEST//v}" "${CURRENT}")
-              [ "$result" -gt 0 ] && _result='true' || _result='false'
+              [ ! "$result" -gt 0 ] && _result='true' || _result='false'
               echo "build=${_result}" >> $GITHUB_ENV
 
       - name: Update version and checksum
