@@ -1,4 +1,5 @@
 # Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
+# https://github.com/brokenpip3/my-pkgbuilds
 
 pkgname=checkpointctl-git
 _pkgname=checkpointctl
