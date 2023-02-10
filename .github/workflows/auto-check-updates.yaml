@@ -46,7 +46,7 @@ jobs:
           LATEST: "${{ steps.latest.outputs.tag }}"
           CURRENT: "${{ matrix.ver }}"
         run: |
-              result=$(vercmp  "${LATEST//v}" "${CURRENT}")
+              result=$(vercmp "${CURRENT}"  "${LATEST//v}")
               [ ! "$result" -gt 0 ] && _result='true' || _result='false'
               echo "build=${_result}" >> $GITHUB_ENV
 
