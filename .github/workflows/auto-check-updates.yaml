@@ -33,7 +33,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: oprypin/find-latest-tag@v1
+      - uses: oprypin/find-latest-tag@v1.1.1
         with:
           repository: ${{ matrix.repo }}
         id: latest
