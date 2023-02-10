@@ -36,6 +36,7 @@ jobs:
       - uses: oprypin/find-latest-tag@v1.1.1
         with:
           repository: ${{ matrix.repo }}
+          sort-tags: false
         id: latest
         name: Check latest version
 
