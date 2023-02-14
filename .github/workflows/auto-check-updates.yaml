@@ -77,10 +77,16 @@ jobs:
 
       - name: Build
         if: env.build == 'true'
+        env:
+          PKG: ${{ matrix.pkg }}
         working-directory: "packages/${{ matrix.pkg }}"
+        shell: bash
         run: |
           sudo pacman -Syu --noconfirm
-          makepkg -s -o --noconfirm
+          aur_depend="$(aur depends ${PKG} |gre -v ${PKG})"
+          if [[ $(${aur_depend}|wc -l) -gt 0 ]]; then
+            trizen -S ${aur_depend} --noedit --noinstall --noconfirm
+          fi
           makepkg -sc --noconfirm
           makepkg --printsrcinfo > .SRCINFO
 

@@ -13,7 +13,8 @@ RUN useradd --create-home --shell /bin/bash makepkg && touch /etc/sudoers.d/make
 USER makepkg
 WORKDIR /build
 RUN printf "${GPGOPT}\n" >> /home/makepkg/.gnupg/gpg.conf \
-   && git clone https://aur.archlinux.org/aurutils.git && cd aurutils; makepkg -sic --noconfirm;
+   && git clone https://aur.archlinux.org/aurutils.git && cd aurutils; makepkg -sic --noconfirm \
+   && git clone https://aur.archlinux.org/trizen.git && cd trizen; makepkg -sic --noconfirm
 
 # Main
 
