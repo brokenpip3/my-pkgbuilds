@@ -84,7 +84,7 @@ jobs:
         run: |
           sudo pacman -Syu --noconfirm
           aur_depend="$(aur depends ${PKG} |grep -v ${PKG})"
-          if [[ $(${aur_depend}|wc -l) -gt 0 ]]; then
+          if [[ $(echo ${aur_depend}|wc -l) -gt 0 ]]; then
             trizen -S ${aur_depend} --noedit --noinstall --noconfirm
           fi
           makepkg -sc --noconfirm
