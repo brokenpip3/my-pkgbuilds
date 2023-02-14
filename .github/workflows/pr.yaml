@@ -31,13 +31,17 @@ jobs:
       - name: Get changed files in the packages folder
         id: changed-files-specific
         uses: tj-actions/changed-files@v35
-        #with:
-          #path: packages/${{ matrix.pkg }}
       - name: Build
+        env:
+          PKG: ${{ matrix.pkg }}
         if: steps.changed-files-specific.outputs.any_changed == 'true'
+        shell: bash
         working-directory: "packages/${{ matrix.pkg }}"
         run: |
           sudo pacman -Syu --noconfirm
-          makepkg -s -o --noconfirm
+          aur_depend="$(aur depends ${PKG} |gre -v ${PKG})"
+          if [[ $(${aur_depend}|wc -l) -gt 0 ]]; then
+            trizen -S ${aur_depend} --noedit --noinstall --noconfirm
+          fi
           makepkg -sc --noconfirm
           makepkg --printsrcinfo > .SRCINFO
