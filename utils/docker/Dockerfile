@@ -14,7 +14,7 @@ USER makepkg
 WORKDIR /build
 RUN printf "${GPGOPT}\n" >> /home/makepkg/.gnupg/gpg.conf \
    && git clone https://aur.archlinux.org/aurutils.git && cd aurutils; makepkg -sc --noconfirm \
-   && git clone https://aur.archlinux.org/trizen.git && cd trizen; makepkg -sc --noconfirm
+   && cd /build; git clone https://aur.archlinux.org/trizen.git && cd trizen; makepkg -sc --noconfirm
 
 # Main
 
