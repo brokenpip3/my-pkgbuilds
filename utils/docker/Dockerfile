@@ -13,8 +13,8 @@ RUN useradd --create-home --shell /bin/bash makepkg && touch /etc/sudoers.d/make
 USER makepkg
 WORKDIR /build
 RUN printf "${GPGOPT}\n" >> /home/makepkg/.gnupg/gpg.conf \
-   && git clone https://aur.archlinux.org/aurutils.git && cd aurutils; makepkg -sic --noconfirm \
-   && git clone https://aur.archlinux.org/trizen.git && cd trizen; makepkg -sic --noconfirm
+   && git clone https://aur.archlinux.org/aurutils.git && cd aurutils; makepkg -sc --noconfirm \
+   && git clone https://aur.archlinux.org/trizen.git && cd trizen; makepkg -sc --noconfirm
 
 # Main
 
@@ -28,6 +28,7 @@ LABEL maintainer="brokenpip3 <brokenpip3@gmail.com>" \
       org.opencontainers.image.source="https://www.github.com/brokenpip3/my-pkgbuilds" \
       org.opencontainers.image.base.name="docker.io/archlinux:base-devel"
 COPY --from=BUILDER /build/aurutils/*.pkg.tar.zst /tmp/
+COPY --from=BUILDER /build/trizen/*.pkg.tar.zst /tmp/
 RUN pacman -Sy archlinux-keyring --noconfirm --noprogressbar && pacman -Syy --needed --noconfirm --noprogressbar pacman-contrib icu base-devel \
    && pacman -U /tmp/*.pkg.tar.zst --noconfirm && pacman -Sc --noconfirm
 RUN useradd --create-home -u 1001 --shell /bin/bash makepkg && touch /etc/sudoers.d/makepkg \
