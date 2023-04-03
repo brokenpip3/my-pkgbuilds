@@ -82,7 +82,7 @@ jobs:
         working-directory: "packages/${{ matrix.pkg }}"
         shell: bash
         run: |
-          sudo pacman -Syu --noconfirm
+          sudo pacman -Sy --noconfirm
           aur_depend="$(aur depends ${PKG} |grep -v ${PKG})"
           if [[ $(echo ${aur_depend}|wc -l) -gt 0 ]]; then
             trizen -S ${aur_depend} --noedit --noconfirm
