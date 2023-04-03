@@ -1,5 +1,5 @@
 # Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
-#https://github.com/brokenpip3/my-pkgbuilds
+# https://github.com/brokenpip3/my-pkgbuilds
 
 pkgname=okta-aws-cli
 pkgver=0.3.0
