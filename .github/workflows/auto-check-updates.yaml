@@ -82,6 +82,7 @@ jobs:
         working-directory: "packages/${{ matrix.pkg }}"
         shell: bash
         run: |
+          set -x
           sudo pacman -Sy --noconfirm
           aur_depend="$(aur depends ${PKG} | { grep -v ${PKG} || true; })"
           if [[ $(echo ${aur_depend}|wc -l) -gt 0 ]]; then
