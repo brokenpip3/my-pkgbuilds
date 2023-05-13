@@ -26,7 +26,7 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJSON(needs.create-pkg-list.outputs.matrix) }}
     container:
-      image: ghcr.io/brokenpip3/my-pkgbuilds:main
+      image: ghcr.io/brokenpip3/my-pkgbuilds:pr-23
     steps:
       - uses: actions/checkout@v3
       - name: Get changed files in the packages folder
