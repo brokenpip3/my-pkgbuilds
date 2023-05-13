@@ -43,8 +43,13 @@ jobs:
         working-directory: "packages/${{ matrix.pkg }}"
         run: |
           set -x
-          #makepkg --printsrcinfo > .SRCINFO
           sudo pacman -Sy openssh --noconfirm
           eval `ssh-agent -s`
           ssh-add - <<< $AUR_BOT_PRIVATEKEY
           git clone ssh://aur@aur.archlinux.org/${PKG}.git
+          ls -l
+          cp PKGBUILD .SRCINFO ${PKG}/
+          git -C ${PKG} config user.name "brokenpip3-bot"
+          git -C ${PKG} config user.email "bronkenpip3+bot@gmail.com"
+          git -C ${PKG} git status
+          git -C ${PKG} git diff
