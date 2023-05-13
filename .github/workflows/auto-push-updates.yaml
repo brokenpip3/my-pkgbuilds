@@ -51,5 +51,5 @@ jobs:
           cp PKGBUILD .SRCINFO ${PKG}/
           git -C ${PKG} config user.name "brokenpip3-bot"
           git -C ${PKG} config user.email "bronkenpip3+bot@gmail.com"
-          git -C ${PKG} git status
-          git -C ${PKG} git diff
+          git -C ${PKG} status
+          git -C ${PKG} diff
