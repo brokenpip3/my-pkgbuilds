@@ -1,4 +1,4 @@
-name: check-pr
+name: auto-push-updates
 
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ jobs:
         script=$(./utils/make-matrix.sh)
         echo "matrix=${script}" >> $GITHUB_OUTPUT
 
-  build:
+  update:
     needs: [ create-pkg-list]
     runs-on: ubuntu-latest
     strategy:
