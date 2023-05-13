@@ -37,7 +37,7 @@ jobs:
       - name: Update files
         env:
           PKG: ${{ matrix.pkg }}
-          AUR_BOT_PRIVATEKEY: ${{ secret.AUR_BOT_PRIVATEKEY }}
+          AUR_BOT_PRIVATEKEY: ${{ secrets.AUR_BOT_PRIVATEKEY }}
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         shell: bash
         working-directory: "packages/${{ matrix.pkg }}"
