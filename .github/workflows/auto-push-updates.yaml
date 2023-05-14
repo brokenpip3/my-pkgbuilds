@@ -1,0 +1,58 @@
+name: auto-push-updates
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'packages/**'
+jobs:
+
+  create-pkg-list:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+    - uses: actions/checkout@v3
+    - id: matrix
+      run: |
+        script=$(./utils/make-matrix.sh)
+        echo "matrix=${script}" >> $GITHUB_OUTPUT
+
+  update:
+    needs: [ create-pkg-list]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.create-pkg-list.outputs.matrix) }}
+    container:
+      image: ghcr.io/brokenpip3/my-pkgbuilds:main
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get changed files in the packages folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v35
+        with:
+          files: packages/${{ matrix.pkg }}
+      - name: Update files
+        env:
+          PKG: ${{ matrix.pkg }}
+          AUR_BOT_PRIVATEKEY: ${{ secrets.AUR_BOT_PRIVATEKEY }}
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        shell: bash
+        working-directory: "packages/${{ matrix.pkg }}"
+        run: |
+          set -x
+          sudo pacman -Sy openssh --noconfirm
+          eval `ssh-agent -s`
+          ssh-add - <<< $AUR_BOT_PRIVATEKEY
+          git clone ssh://aur@aur.archlinux.org/${PKG}.git
+          ls -l
+          cp PKGBUILD .SRCINFO ${PKG}/
+          git -C ${PKG} config user.name "brokenpip3-bot"
+          git -C ${PKG} config user.email "bronkenpip3+bot@gmail.com"
+          git -C ${PKG} status
+          git -C ${PKG} diff
+          source ${PKG}/PKGBUILD
+          git -C ${PKG} commit -am "Automatic update to version ${pkgver}"
+          git -C ${PKG} push origin/master

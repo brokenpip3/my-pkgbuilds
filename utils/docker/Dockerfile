@@ -29,13 +29,14 @@ LABEL maintainer="brokenpip3 <brokenpip3@gmail.com>" \
       org.opencontainers.image.base.name="docker.io/archlinux:base-devel"
 COPY --from=BUILDER /build/aurutils/*.pkg.tar.zst /tmp/
 COPY --from=BUILDER /build/trizen/*.pkg.tar.zst /tmp/
-RUN pacman -Sy archlinux-keyring --noconfirm --noprogressbar && pacman -Syy --needed --noconfirm --noprogressbar pacman-contrib icu base-devel \
+RUN pacman -Sy archlinux-keyring --noconfirm --noprogressbar && pacman -Syy --needed --noconfirm --noprogressbar pacman-contrib icu base-devel openssh \
    && pacman -U /tmp/*.pkg.tar.zst --noconfirm && pacman -Sc --noconfirm
 RUN useradd --create-home -u 1001 --shell /bin/bash makepkg && touch /etc/sudoers.d/makepkg \
    && printf "makepkg ALL=(ALL) NOPASSWD: /usr/bin/makepkg, /usr/bin/pacman\n" > /etc/sudoers.d/makepkg \
-   && mkdir /build /home/makepkg/.gnupg \
+   && mkdir /build /home/makepkg/.gnupg /home/makepkg/.ssh \
    && chown makepkg:makepkg /home/makepkg/ /build /home/makepkg/.gnupg \
    && printf "${GPGOPT}\n" >> /home/makepkg/.gnupg/gpg.conf
+COPY --chown=makepkg:makepkg known_hosts /home/makepkg/.ssh/known_hosts
 USER makepkg
 
 # No workdir or entrypoint instructions to accomodate the flow inside the github runner
