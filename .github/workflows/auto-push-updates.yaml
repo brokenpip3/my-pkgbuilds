@@ -53,3 +53,5 @@ jobs:
           git -C ${PKG} config user.email "bronkenpip3+bot@gmail.com"
           git -C ${PKG} status
           git -C ${PKG} diff
+          source ${PKG}/PKGBUILD
+          git -C ${PKG} commit -am "Automatic update to version ${pkgver}"
