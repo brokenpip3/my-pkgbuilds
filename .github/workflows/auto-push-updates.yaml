@@ -3,7 +3,7 @@ name: auto-push-updates
 on:
   workflow_dispatch:
   push:
-    branches: [ "main", "add-auto-push" ]
+    branches: [ "main" ]
     paths:
       - 'packages/**'
 jobs:
@@ -55,3 +55,4 @@ jobs:
           git -C ${PKG} diff
           source ${PKG}/PKGBUILD
           git -C ${PKG} commit -am "Automatic update to version ${pkgver}"
+          git -C ${PKG} push origin/master
