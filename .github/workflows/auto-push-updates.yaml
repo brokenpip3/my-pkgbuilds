@@ -55,4 +55,4 @@ jobs:
           git -C ${PKG} diff
           source ${PKG}/PKGBUILD
           git -C ${PKG} commit -am "Automatic update to version ${pkgver}"
-          git -C ${PKG} push origin/master
+          git -C ${PKG} push origin master
