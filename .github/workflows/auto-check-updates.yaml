@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
   schedule:
   - cron: "10 10,22 * * *"
-  push:
-    branches: [ "main" ]
+
 jobs:
 
   create-pkg-list:
