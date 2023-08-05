@@ -28,7 +28,7 @@ check() {
 }
 
 package() {
-    install -Dm644 man/${pkgname}.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+    install -Dm644 ${pkgname}.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
     cd "$srcdir/$pkgname-$pkgver"
     install -D ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 completions/${pkgname}.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
