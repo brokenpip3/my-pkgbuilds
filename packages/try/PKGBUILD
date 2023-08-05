@@ -19,12 +19,15 @@ sha512sums=('23e4135d5657da91e27d69b30efd5ffbc4a0b99febb72973aece132be11b9e7d59d
 
 #create man page
 # Pandoc-cli require too many packages as dependecy
+# will be download directly from source
+# see: https://github.com/binpash/try/issues/61
 #prepare() {
 #    #make -C man try.1
 #}
 
 check() {
-    $srcdir/$pkgname-$pkgver/scripts/run_tests.sh
+    cd $srcdir/$pkgname-$pkgver
+    scripts/run_tests.sh
 }
 
 package() {
