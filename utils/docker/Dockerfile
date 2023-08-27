@@ -5,7 +5,7 @@ ARG GPGOPT='keyserver-options auto-key-retrieve'
 
 FROM archlinux:base-devel as BUILDER
 ARG GPGOPT
-RUN pacman -Sy archlinux-keyring --noconfirm --noprogressbar && pacman -Syy --needed --noconfirm --noprogressbar git base-devel \
+RUN pacman -Sy archlinux-keyring --noconfirm --noprogressbar && pacman -Syyu --needed --noconfirm --noprogressbar git base-devel \
    && pacman -Sc --noconfirm
 RUN useradd --create-home --shell /bin/bash makepkg && touch /etc/sudoers.d/makepkg \
    && printf "makepkg ALL=(ALL) NOPASSWD: /usr/bin/makepkg, /usr/bin/pacman\n" > /etc/sudoers.d/makepkg && mkdir /build \
@@ -29,7 +29,7 @@ LABEL maintainer="brokenpip3 <brokenpip3@gmail.com>" \
       org.opencontainers.image.base.name="docker.io/archlinux:base-devel"
 COPY --from=BUILDER /build/aurutils/*.pkg.tar.zst /tmp/
 COPY --from=BUILDER /build/trizen/*.pkg.tar.zst /tmp/
-RUN pacman -Sy archlinux-keyring --noconfirm --noprogressbar && pacman -Syy --needed --noconfirm --noprogressbar pacman-contrib icu base-devel openssh \
+RUN pacman -Sy archlinux-keyring --noconfirm --noprogressbar && pacman -Syyu --needed --noconfirm --noprogressbar pacman-contrib icu base-devel openssh \
    && pacman -U /tmp/*.pkg.tar.zst --noconfirm && pacman -Sc --noconfirm
 RUN useradd --create-home -u 1001 --shell /bin/bash makepkg && touch /etc/sudoers.d/makepkg \
    && printf "makepkg ALL=(ALL) NOPASSWD: /usr/bin/makepkg, /usr/bin/pacman\n" > /etc/sudoers.d/makepkg \
