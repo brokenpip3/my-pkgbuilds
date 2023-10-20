@@ -12,7 +12,7 @@ jobs:
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - id: matrix
       run: |
         script=$(./utils/make-matrix.sh)
@@ -30,7 +30,7 @@ jobs:
     container:
       image: ghcr.io/brokenpip3/my-pkgbuilds:main
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: oprypin/find-latest-tag@v1.1.1
         with:
