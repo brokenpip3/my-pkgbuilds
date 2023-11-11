@@ -3,7 +3,7 @@
 #
 
 pkgname=pdh
-pkgver=0.3.16
+pkgver=0.3.17
 pkgrel=1
 pkgdesc="Pagerduty CLI for humans"
 arch=('any')
