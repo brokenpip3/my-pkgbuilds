@@ -14,7 +14,7 @@ url="https://github.com/falcosecurity/falco"
 license=(Apache)
 # EXAMPLE URL: https://download.falco.org/packages/bin/x86_64/falco-0.29.1-x86_64.tar.gz
 source_x86_64=("https://download.falco.org/packages/bin/${arch}/falco-${pkgver}-x86_64.tar.gz")
-sha256sums_x86_64=('656da11fb07a82ded65811000469c59897b353d238ed4ee62adaef30a666fccb')
+sha256sums_x86_64=('bffa2a50581d8391cfe20e09e70b260a7d48693757e4c52ffae9552c969e3400')
 
 _commit=6.0.1+driver
 
