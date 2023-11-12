@@ -1,18 +1,18 @@
-# Maintainer: Kris Nóva <kris@nivenly.com>
+# Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
+# https://github.com/brokenpip3/my-pkgbuilds
+# Contributor: Kris Nóva <kris@nivenly.com> R.I.P.
 
+# WIP: This package should be renamed to falco-probe-ebpf
 pkgbase=falco-ebpf
-pkgname=(falco-ebpf)
+pkgname=("falco-ebpf")
 pkgver=0.36.2
 pkgrel=1
 pkgdesc="Cloud native runtime security. eBPF (Perf Buffer)"
 arch=(x86_64)
 url="https://github.com/falcosecurity/falco"
-license=(Apache)
-makedepends=(cmake git c-ares jq grpc yaml-cpp clang linux-headers)
-checkdepends=()
-optdepends=()
-backup=()
-options=()
+license=("apache")
+makedepends=(cmake git c-ares jq grpc yaml-cpp clang linux-headers llvm)
+install=falco-ebpf.install
 source=("falco-${pkgver}.tar.gz::https://github.com/falcosecurity/falco/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('b09786888fd6fa1e9f9958104a7a1b91282e95ace4f5b33d333704db76b2cf3c')
 
@@ -33,12 +33,7 @@ build() {
 }
 
 package() {
-    cd "falco-${pkgver}/build"
-    mkdir -p /usr/share/falco
-    cp driver/bpf/probe.o ${pkgdir}/falco.o
-    echo ""
-    echo "********************************"
-    echo "INSTALLED TO: $pkgdir/falco.o"
-    echo "********************************"
-    echo ""
+  cd "falco-${pkgver}/build"
+  mkdir -p ${pkgdir}/usr/share/falco
+  install -D -m0644 driver/bpf/probe.o ${pkgdir}/usr/share/falco/falco.o
 }

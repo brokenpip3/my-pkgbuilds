@@ -1,0 +1,7 @@
+post_install() {
+    echo ""
+    echo "**************************************"
+    echo "INSTALLED TO: /usr/share/falco/falco.o"
+    echo "**************************************"
+    echo ""
+}
