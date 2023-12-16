@@ -2,18 +2,19 @@
 # https://github.com/brokenpip3/my-pkgbuilds
 
 pkgname=gpt-engineer
-pkgver=0.0.7
+_name=gpt_engineer
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Specify what you want it to build, the AI asks for clarification, and then builds it."
 arch=('any')
 url="https://github.com/AntonOsika/gpt-engineer"
 license=('MIT')
-depends=(python-openai python-termcolor python-typer)
-makedepends=(python-build python-installer python-wheel)
+depends=(python-openai python-termcolor python-typer python-dataclasses-json python-tiktoken python-tabulate python-dotenv python-langchain)
+makedepends=(python-build python-installer python-poetry-core)
 #checkdepends=(python-pytest)
 install=gpt-engineer.install
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('237977ed3b9e5dff8f457e68e7df08ef342a527e86790342ded16db75deea866')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_name-$pkgver.tar.gz")
+sha256sums=('79f8c468ae8638ec4e8c0a3a42ee76f8ebddf99e2c175478b48a1706bf9202f8')
 
 
 build() {
