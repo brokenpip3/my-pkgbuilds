@@ -1,6 +1,6 @@
 # Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
 # https://github.com/brokenpip3/my-pkgbuilds
-# Contributors: 
+# Contributors:
 # - Kris Nóva <kris@nivenly.com> R.I.P.
 # - Thomas Labarussias <issif+aur@gadz.org>
 
@@ -25,9 +25,6 @@ package_falco-bin() {
   conflicts=(falco)
     install -d "${pkgdir}/etc/falco"
     cp -rv falco-${pkgver}-${arch}/etc/falco/* "${pkgdir}/etc/falco"
-
-    install -d "${pkgdir}/usr/share/falco"
-    cp -rv falco-${pkgver}-${arch}/usr/share/falco/* "${pkgdir}"/usr/share/falco
 
     install -d "${pkgdir}/usr/bin"
     cp -rv falco-${pkgver}-${arch}/usr/bin/* "${pkgdir}/usr/bin"

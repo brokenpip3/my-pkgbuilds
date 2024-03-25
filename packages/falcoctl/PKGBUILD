@@ -1,6 +1,6 @@
 # Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
 # https://github.com/brokenpip3/my-pkgbuilds
-# Contributors: 
+# Contributors:
 # - Thomas Labarussias <issif+aur@gadz.org>
 
 pkgname=falcoctl
@@ -12,7 +12,7 @@ url="https://github.com/falcosecurity/falcoctl"
 license=('APACHE')
 makedepends=('go' 'git' 'make')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9bcd74fdd444dfc5fb40ca71df297c72df28ba381ee4d494b9ad4e80743094c6')
+sha256sums=('8b808c73e7c8296a88ce25923b4a289870546139b09ac06d6400c42916e1217d')
 
 build() {
   cd "$pkgname-$pkgver"

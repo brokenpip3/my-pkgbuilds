@@ -1,5 +1,5 @@
 pkgbase = falcosidekick
-	pkgdesc =  Connect Falco to your ecosystem 
+	pkgdesc =  Connect Falco to your ecosystem
 	pkgver = 2.28.0
 	pkgrel = 1
 	url = https://github.com/falcosecurity/falcosidekick
