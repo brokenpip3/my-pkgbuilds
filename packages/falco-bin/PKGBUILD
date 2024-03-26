@@ -1,8 +1,7 @@
 # Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
+# Maintainer: Thomas Labarussias <issif+aur@gadz.org>
 # https://github.com/brokenpip3/my-pkgbuilds
-# Contributors:
-# - Kris Nóva <kris@nivenly.com> R.I.P.
-# - Thomas Labarussias <issif+aur@gadz.org>
+# Contributor: Kris Nóva R.I.P. <kris@nivenly.com>
 
 pkgbase=falco-bin
 pkgname=("falco-bin"
