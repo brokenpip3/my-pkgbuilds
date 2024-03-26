@@ -15,11 +15,17 @@ sha256sums=('bb9c3fc484514526c40174423a0ca26f38c3a26cd3c0b76b442598693cfc00ff')
 
 build() {
   cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   make falcosidekick
 }
 
 check() {
   cd "$pkgname-$pkgver"
+  export TEST_FLAGS="-v"
   make test
 }
 
