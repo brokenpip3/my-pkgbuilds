@@ -1,7 +1,7 @@
 pkgbase = falco-bin
 	pkgdesc = Cloud native runtime security. Binaries and Kernel modules. (Stable)
 	pkgver = 0.37.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/falcosecurity/falco
 	arch = x86_64
 	license = Apache
