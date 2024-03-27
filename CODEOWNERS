@@ -1,3 +1,6 @@
 /packages/pdh/ @mbovo @brokenpip3
 /packages/python-pdpyras/ @mbovo @brokenpip3
+/packages/falco-bin @Issif @brokenpip3
+/packages/falcoctl @Issif @brokenpip3
+/packages/falcosidekick @Issif @brokenpip3
 * @brokenpip3
