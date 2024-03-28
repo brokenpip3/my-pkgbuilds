@@ -2,7 +2,7 @@
 # PRs: https://github.com/brokenpip3/my-pkgbuilds
 
 pkgname=python-api4jenkins
-pkgver=1.15.0
+pkgver=2.0.3
 _name=${pkgname#python-}
 pkgrel=1
 pkgdesc="Python client library for Jenkins API"
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('python-requests' 'python-certifi' 'python-charset-normalizer')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ef1c06a3782cdc21f91b9aca734baf933cbb41da9e12d2bde5fa4eacd2a65541')
+sha256sums=('f31bbeac48ef6d2c795c20cdca8ebafc34b8d92b09f1287c66484c42196bc514')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
