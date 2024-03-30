@@ -1,19 +1,21 @@
 pkgbase = falco-bin
-	pkgdesc = Cloud native runtime security. Binaries and Kernel modules. (Stable)
+	pkgdesc = Cloud native runtime security. Binary and config files
 	pkgver = 0.37.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/falcosecurity/falco
+	install = falco.install
 	arch = x86_64
 	license = Apache
+	optdepends = falco-probe-ebpf: ebpf probe
+	optdepends = falco-module-dkms: dkms module
+	optdepends = falcoctl: administrative tooling for Falco
+	optdepends = falcosidekick: connect Falco to your ecosystem
+	provides = falco-bin
+	backup = etc/falco/falco_rules.yaml
+	backup = etc/falco/falco.yaml
 	source_x86_64 = https://download.falco.org/packages/bin/x86_64/falco-0.37.1-x86_64.tar.gz
+	source_x86_64 = falco.service
 	sha256sums_x86_64 = 8d441495f72489be1bcab1ce8476ae26007fe2063c8053e8082b264066c46f25
+	sha256sums_x86_64 = 723b2a1e508dbc4d75ba159ef2096e2be49458abf7b417ca637891610bba103f
 
 pkgname = falco-bin
-	provides = falco
-	conflicts = falco
-
-pkgname = falco-bin-dkms
-	depends = dkms
-	depends = linux-headers
-	provides = falco-dkms
-	conflicts = falco-dkms
