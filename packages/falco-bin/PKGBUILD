@@ -5,7 +5,8 @@
 
 pkgbase=falco-bin
 pkgname=falco-bin
-provides=(falco-bin)
+provides=(falco)
+conflicts=(falco)
 backup=('etc/falco/falco_rules.yaml'  'etc/falco/falco.yaml')
 pkgver=0.37.1
 pkgrel=3
