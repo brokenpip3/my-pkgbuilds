@@ -24,10 +24,8 @@ source_x86_64=(
     "https://download.falco.org/packages/bin/${arch}/falco-${pkgver}-x86_64.tar.gz"
     "falco.service"
 )
-sha256sums_x86_64=(
-    '8d441495f72489be1bcab1ce8476ae26007fe2063c8053e8082b264066c46f25'
-    '723b2a1e508dbc4d75ba159ef2096e2be49458abf7b417ca637891610bba103f'
-)
+sha256sums_x86_64=('8d441495f72489be1bcab1ce8476ae26007fe2063c8053e8082b264066c46f25'
+                   '25c75419e786d6287555094746712f589f5e31ed569609604ceaf85ec2320be5')
 install="falco.install"
 
 package() {

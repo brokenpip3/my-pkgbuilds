@@ -17,10 +17,8 @@ source_x86_64=(
     "https://download.falco.org/packages/bin/${arch}/falco-${pkgver}-x86_64.tar.gz"
     "falco-dkms.service"
 )
-sha256sums_x86_64=(
-    '8d441495f72489be1bcab1ce8476ae26007fe2063c8053e8082b264066c46f25'
-    'bc52a0b1d33407244de775d5a8d673ebb2b283aac177fcdebbd4ba1942275df2'
-)
+sha256sums_x86_64=('8d441495f72489be1bcab1ce8476ae26007fe2063c8053e8082b264066c46f25'
+                   '86f0681cb0738adecc13359b52d1471ac4dc8ffb36a71a4c2054a4b392835d78')
 install="falco-dkms.install"
 
 _driver="7.0.0+driver"

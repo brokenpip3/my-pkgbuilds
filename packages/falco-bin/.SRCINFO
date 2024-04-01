@@ -17,6 +17,6 @@ pkgbase = falco-bin
 	source_x86_64 = https://download.falco.org/packages/bin/x86_64/falco-0.37.1-x86_64.tar.gz
 	source_x86_64 = falco.service
 	sha256sums_x86_64 = 8d441495f72489be1bcab1ce8476ae26007fe2063c8053e8082b264066c46f25
-	sha256sums_x86_64 = 723b2a1e508dbc4d75ba159ef2096e2be49458abf7b417ca637891610bba103f
+	sha256sums_x86_64 = 25c75419e786d6287555094746712f589f5e31ed569609604ceaf85ec2320be5
 
 pkgname = falco-bin

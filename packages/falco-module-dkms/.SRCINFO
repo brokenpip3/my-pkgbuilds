@@ -13,6 +13,6 @@ pkgbase = falco-modules-dmks
 	source_x86_64 = https://download.falco.org/packages/bin/x86_64/falco-0.37.1-x86_64.tar.gz
 	source_x86_64 = falco-dkms.service
 	sha256sums_x86_64 = 8d441495f72489be1bcab1ce8476ae26007fe2063c8053e8082b264066c46f25
-	sha256sums_x86_64 = ef1a4ddd602af6d11daac7aee95cd485af232f61eaa98e2812d7caad232efabc
+	sha256sums_x86_64 = 86f0681cb0738adecc13359b52d1471ac4dc8ffb36a71a4c2054a4b392835d78
 
 pkgname = falco-modules-dmks
