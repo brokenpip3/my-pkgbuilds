@@ -1,5 +1,5 @@
 [Unit]
-Description=Falco: Container Native Runtime Security with ebpf
+Description=Falco: Cloud Native Runtime Security with ebpf
 Documentation=https://falco.org/docs/
 
 [Service]
