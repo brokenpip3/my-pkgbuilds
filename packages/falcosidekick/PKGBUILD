@@ -4,7 +4,7 @@
 
 pkgname=falcosidekick
 pkgver=2.28.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Connect Falco to your ecosystem"
 backup=('etc/falcosidekick/config.yaml')
 arch=('x86_64')
@@ -41,6 +41,6 @@ check() {
 package() {
   install -Dm755 "${srcdir}/${pkgname}/falcosidekick" "${pkgdir}/usr/bin/falcosidekick"
   install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/config.yaml" "${pkgdir}/etc/falcosidekick/config.yaml"
+  install -Dm640 "${srcdir}/config.yaml" "${pkgdir}/etc/falcosidekick/config.yaml"
   install -Dm644 "${srcdir}/falcosidekick.service" "${pkgdir}/usr/lib/systemd/system/falcosidekick.service"
 }
