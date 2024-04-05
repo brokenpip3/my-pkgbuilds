@@ -10,7 +10,7 @@ conflicts=(falco)
 backup=('etc/falco/falco_rules.yaml'  'etc/falco/falco.yaml')
 pkgver=0.37.1
 pkgrel=3
-pkgdesc="Cloud native runtime security. Binary and config files"
+pkgdesc="Cloud native runtime security. Modern ebpf and config files"
 arch=(x86_64)
 license=(Apache)
 optdepends=(
@@ -25,7 +25,7 @@ source_x86_64=(
     "falco.service"
 )
 sha256sums_x86_64=('8d441495f72489be1bcab1ce8476ae26007fe2063c8053e8082b264066c46f25'
-                   '25c75419e786d6287555094746712f589f5e31ed569609604ceaf85ec2320be5')
+                   'ab903a180bc3b00d42d2c84b979a7d40acc6be5599b9bd82cab4d928a5fe986e')
 install="falco.install"
 
 package() {
