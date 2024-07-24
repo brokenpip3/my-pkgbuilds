@@ -1,6 +1,6 @@
 pkgbase = falco
 	pkgdesc = Cloud native runtime security. Modern ebpf and config files
-	pkgver = 0.37.1
+	pkgver = 0.38.1
 	pkgrel = 1
 	url = https://github.com/falcosecurity/falco
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = falco
 	conflicts = falco-bin
 	backup = etc/falco/falco_rules.yaml
 	backup = etc/falco/falco.yaml
-	source_x86_64 = falco-0.37.1.tar.gz::https://github.com/falcosecurity/falco/archive/refs/tags/0.37.1.tar.gz
-	source_x86_64 = git+https://github.com/falcosecurity/rules#tag=falco-rules-3.0.1
+	source_x86_64 = falco-0.38.1.tar.gz::https://github.com/falcosecurity/falco/archive/refs/tags/0.38.1.tar.gz
+	source_x86_64 = git+https://github.com/falcosecurity/rules#tag=falco-rules-3.1.0
 	source_x86_64 = falco-modern-bpf.service
-	sha256sums_x86_64 = f602bd025ff2997ecce1bd1f479592ab666276912d72212ab8d1fffd38ab8c94
+	sha256sums_x86_64 = 0e5cb8f527e3c55179a12ab312ee8955532d6d9ba88f100aa60afc50244e85da
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = 0709add709184db8a275a5c7c6b6b4123b6dc418e72f7c9d4ab6dcc1d5ab2644
 
