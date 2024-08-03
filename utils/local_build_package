@@ -13,17 +13,18 @@ build_package() {
 
     echo "$package_name: Starting"
     set -e
-    docker run --rm -v "$package_dir":/tmp/build "$DOCKER_IMAGE" /bin/bash -c "
+    docker run --rm --user 1000 -v "$package_dir":/tmp/build "$DOCKER_IMAGE" /bin/bash -c "
         sudo pacman -Sy --noconfirm
         aur_depend=\"\$(aur depends ${package_name} | grep -v ${package_name} || true)\"
+        echo $aur_depend
         [[ \$(echo \${aur_depend} | wc -w) -gt 0 ]] && trizen -S \${aur_depend} --noedit --noconfirm
-        cp -v /tmp/build/* /build
-        cd /build && makepkg -sc --noconfirm && makepkg --printsrcinfo > .SRCINFO
+        cp -v /tmp/build/* /build && cd /build
+        makepkg --printsrcinfo > .SRCINFO && cp /build/.SRCINFO /tmp/build
+        makepkg -sc --noconfirm
     "
-    echo "$package_name: Done"
 }
 
-docker build -t "$DOCKER_IMAGE" utils/docker -f utils/docker/Dockerfile
+docker build --build-arg="USER=1000" -t "$DOCKER_IMAGE" utils/docker -f utils/docker/Dockerfile
 
 if [ -n "$PACKAGE_TO_BUILD" ]; then
     package_dir="$PACKAGES_PATH/$PACKAGE_TO_BUILD"
