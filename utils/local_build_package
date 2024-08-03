@@ -19,6 +19,7 @@ build_package() {
         echo $aur_depend
         [[ \$(echo \${aur_depend} | wc -w) -gt 0 ]] && trizen -S \${aur_depend} --noedit --noconfirm
         cp -v /tmp/build/* /build && cd /build
+        updpkgsums
         makepkg --printsrcinfo > .SRCINFO && cp /build/.SRCINFO /tmp/build
         makepkg -sc --noconfirm
     "
