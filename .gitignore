@@ -5,3 +5,4 @@ packages/*/*
 !packages/*/.SRCINFO
 !packages/*/*.install
 !packages/*/*.service
+!packages/*/*.config.yaml

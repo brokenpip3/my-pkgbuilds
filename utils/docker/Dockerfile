@@ -1,5 +1,6 @@
 # Var
 ARG GPGOPT='keyserver-options auto-key-retrieve'
+ARG USER=1001
 
 # Builder
 
@@ -20,6 +21,7 @@ RUN printf "${GPGOPT}\n" >> /home/makepkg/.gnupg/gpg.conf \
 
 FROM archlinux:base-devel
 ARG GPGOPT
+ARG USER=1001
 LABEL maintainer="brokenpip3 <brokenpip3@gmail.com>" \
       org.opencontainers.image.authors="brokenpip3 <brokenpip3@gmail.com>" \
       org.opencontainers.image.title="aur-builder" \
@@ -31,7 +33,7 @@ COPY --from=BUILDER /build/aurutils/*.pkg.tar.zst /tmp/
 COPY --from=BUILDER /build/trizen/*.pkg.tar.zst /tmp/
 RUN pacman -Sy archlinux-keyring --noconfirm --noprogressbar && pacman -Syyu --needed --noconfirm --noprogressbar pacman-contrib icu base-devel openssh \
    && pacman -U /tmp/*.pkg.tar.zst --noconfirm && pacman -Sc --noconfirm
-RUN useradd --create-home -u 1001 --shell /bin/bash makepkg && touch /etc/sudoers.d/makepkg \
+RUN useradd --create-home -u $USER --shell /bin/bash makepkg && touch /etc/sudoers.d/makepkg \
    && printf "makepkg ALL=(ALL) NOPASSWD: /usr/bin/makepkg, /usr/bin/pacman\n" > /etc/sudoers.d/makepkg \
    && mkdir /build /home/makepkg/.gnupg /home/makepkg/.ssh \
    && chown makepkg:makepkg /home/makepkg/ /build /home/makepkg/.gnupg \
