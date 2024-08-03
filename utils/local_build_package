@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+DOCKER_IMAGE="archci:latest"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PACKAGES_PATH="${PACKAGES_PATH:-$SCRIPT_DIR/../packages}"
+PACKAGE_TO_BUILD="$1"
+success=()
+failure=()
+
+build_package() {
+    local package_dir="$1"
+    local package_name=$(basename "$package_dir")
+
+    echo "$package_name: Starting"
+    set -e
+    docker run --rm -v "$package_dir":/tmp/build "$DOCKER_IMAGE" /bin/bash -c "
+        sudo pacman -Sy --noconfirm
+        aur_depend=\"\$(aur depends ${package_name} | grep -v ${package_name} || true)\"
+        [[ \$(echo \${aur_depend} | wc -w) -gt 0 ]] && trizen -S \${aur_depend} --noedit --noconfirm
+        cp -v /tmp/build/* /build
+        cd /build && makepkg -sc --noconfirm && makepkg --printsrcinfo > .SRCINFO
+    "
+    echo "$package_name: Done"
+}
+
+docker build -t "$DOCKER_IMAGE" utils/docker -f utils/docker/Dockerfile
+
+if [ -n "$PACKAGE_TO_BUILD" ]; then
+    package_dir="$PACKAGES_PATH/$PACKAGE_TO_BUILD"
+    build_package "$package_dir" && success+=("$PACKAGE_TO_BUILD") || failure+=("$PACKAGE_TO_BUILD")
+else
+    for d in "$PACKAGES_PATH"/*; do
+        if [ -d "$d" ]; then
+            build_package "$d" && success+=(${d##*/}) || failure+=(${d##*/})
+        fi
+    done
+fi
+
+printf "Packages built successfully: "
+printf '%s\n' "${success[@]}"
+printf "Packages that failed to build: "
+printf '%s\n' "${failure[@]}"
