@@ -27,7 +27,7 @@ source_x86_64=(
     "falco-modern-bpf.service"
 )
 sha256sums_x86_64=('c830e108ab8daf6030d011f4a3fd817fc471e9292bf54c381f2cde42473213fb'
-                   'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+                   'e2c117951ccbab473569894bd22aa95aac3704e52aefd7023563806eb9f5e98c'
                    '0709add709184db8a275a5c7c6b6b4123b6dc418e72f7c9d4ab6dcc1d5ab2644')
 install="falco.install"
 

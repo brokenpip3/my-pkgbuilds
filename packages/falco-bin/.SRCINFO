@@ -15,10 +15,10 @@ pkgbase = falco-bin
 	backup = etc/falco/falco_rules.yaml
 	backup = etc/falco/falco.yaml
 	source_x86_64 = https://download.falco.org/packages/bin/x86_64/falco-0.39.2-x86_64.tar.gz
-	source_x86_64 = git+https://github.com/falcosecurity/rules#tag=falco-rules-3.0.1
+	source_x86_64 = git+https://github.com/falcosecurity/rules#tag=falco-rules-3.2.0
 	source_x86_64 = falco-modern-bpf.service
 	sha256sums_x86_64 = c830e108ab8daf6030d011f4a3fd817fc471e9292bf54c381f2cde42473213fb
-	sha256sums_x86_64 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums_x86_64 = e2c117951ccbab473569894bd22aa95aac3704e52aefd7023563806eb9f5e98c
 	sha256sums_x86_64 = 0709add709184db8a275a5c7c6b6b4123b6dc418e72f7c9d4ab6dcc1d5ab2644
 
 pkgname = falco-bin
