@@ -4,7 +4,7 @@
 
 pkgname=pdh
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pagerduty CLI for humans"
 arch=('any')
 url="https://github.com/mbovo/pdh"
