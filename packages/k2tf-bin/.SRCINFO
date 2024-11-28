@@ -7,6 +7,6 @@ pkgbase = k2tf-bin
 	license = Mozilla
 	provides = k2tf
 	source = https://github.com/sl1pm4t/k2tf/releases/download/v0.8.0/k2tf_0.8.0_Linux_amd64.tar.gz
-	sha256sums = 1d3f6087aed661cb3079b59ada7e4af5dbb6bb236201ea0bf45a20e5016f316d
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = k2tf-bin
