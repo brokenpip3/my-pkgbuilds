@@ -4,7 +4,7 @@
 
 pkgname=falcosidekick
 pkgver=2.30.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Connect Falco to your ecosystem"
 backup=('etc/falcosidekick/config.yaml')
 arch=('x86_64')

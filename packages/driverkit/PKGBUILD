@@ -3,7 +3,7 @@
 
 pkgname=driverkit
 pkgver=0.20.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Kit for building Falco drivers: kernel modules or eBPF probes"
 arch=('any')
 url="https://github.com/falcosecurity/driverkit"

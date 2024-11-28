@@ -3,7 +3,7 @@
 
 pkgname=okta-aws-cli
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI for having Okta as the IdP for AWS CLI operations"
 arch=('any')
 url="https://github.com/okta/okta-aws-cli"
