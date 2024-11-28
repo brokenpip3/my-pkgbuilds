@@ -33,7 +33,7 @@ jobs:
         id: changed-files-specific
         uses: tj-actions/changed-files@v45
         with:
-          files: packages/${{ matrix.pkg }}
+          files: packages/${{ matrix.pkg }}/*
       - name: Update files
         env:
           PKG: ${{ matrix.pkg }}
