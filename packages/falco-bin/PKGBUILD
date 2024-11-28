@@ -20,14 +20,14 @@ optdepends=(
     "falcosidekick: connect Falco to your ecosystem"
 )
 url="https://github.com/falcosecurity/falco"
-_rules_tag="falco-rules-3.0.1"
+_rules_tag="falco-rules-3.2.0"
 source_x86_64=(
     "https://download.falco.org/packages/bin/${arch}/falco-${pkgver}-x86_64.tar.gz"
     "git+https://github.com/falcosecurity/rules#tag=${_rules_tag}"
     "falco-modern-bpf.service"
 )
 sha256sums_x86_64=('c830e108ab8daf6030d011f4a3fd817fc471e9292bf54c381f2cde42473213fb'
-                   'b33034564398503bac9cb0088759710ddf176e64c249dfcdd47d9310f0692c6e'
+                   'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
                    '0709add709184db8a275a5c7c6b6b4123b6dc418e72f7c9d4ab6dcc1d5ab2644')
 install="falco.install"
 
