@@ -16,7 +16,7 @@ depends=(
   'python-six'
   'python-ws4py'
   'python-requests'
-  'python-requests-unixsocket2'
+  'python-requests-unixsocket'
   'python-requests-toolbelt'
   'python-cryptography'
   'python-pyopenssl'
