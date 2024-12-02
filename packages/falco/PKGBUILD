@@ -7,12 +7,12 @@ pkgname=falco
 provides=(falco)
 conflicts=(falco-bin)
 backup=('etc/falco/falco_rules.yaml'  'etc/falco/falco.yaml')
-pkgver=0.37.1
+pkgver=0.39.2
 pkgrel=2
 pkgdesc="Cloud native runtime security. Modern ebpf and config files"
 arch=(x86_64)
 license=(Apache)
-makedepends=(cmake git c-ares jq grpc yaml-cpp clang linux-headers llvm bpf automake gcc)
+makedepends=(cmake git c-ares jq grpc yaml-cpp clang linux-headers llvm nlohmann-json cpp-httplib cxxopts)
 optdepends=(
     "falco-probe-ebpf: ebpf probe"
     "falco-module-dkms: dkms module"
@@ -20,14 +20,14 @@ optdepends=(
     "falcosidekick: connect Falco to your ecosystem"
 )
 url="https://github.com/falcosecurity/falco"
-_rules_tag="falco-rules-3.0.1"
+_rules_tag="falco-rules-3.2.0"
 source_x86_64=(
     "falco-${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
     "git+https://github.com/falcosecurity/rules#tag=${_rules_tag}"
     "falco-modern-bpf.service"
 )
-sha256sums_x86_64=('f602bd025ff2997ecce1bd1f479592ab666276912d72212ab8d1fffd38ab8c94'
-                   'SKIP'
+sha256sums_x86_64=('769d837b8a6c3e34330cb87bef813414005afc8b4418dc3b8c6df27b89942f6b'
+                   'e2c117951ccbab473569894bd22aa95aac3704e52aefd7023563806eb9f5e98c'
                    '0709add709184db8a275a5c7c6b6b4123b6dc418e72f7c9d4ab6dcc1d5ab2644')
 
 prepare() {
