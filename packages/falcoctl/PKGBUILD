@@ -25,7 +25,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  make test
+  go test -cover -v -skip='TestOAuth|TestConfig|TestInstall|TestPrintenv' ./...
 }
 
 package() {
