@@ -1,6 +1,6 @@
 pkgbase = python-api4jenkins
 	pkgdesc = Python client library for Jenkins API
-	pkgver = 1.15.0
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/joelee2012/api4jenkins
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-api4jenkins
 	depends = python-requests
 	depends = python-certifi
 	depends = python-charset-normalizer
-	source = https://files.pythonhosted.org/packages/source/a/api4jenkins/api4jenkins-1.15.0.tar.gz
-	sha256sums = ef1c06a3782cdc21f91b9aca734baf933cbb41da9e12d2bde5fa4eacd2a65541
+	source = https://files.pythonhosted.org/packages/source/a/api4jenkins/api4jenkins-2.0.3.tar.gz
+	sha256sums = f31bbeac48ef6d2c795c20cdca8ebafc34b8d92b09f1287c66484c42196bc514
 
 pkgname = python-api4jenkins
