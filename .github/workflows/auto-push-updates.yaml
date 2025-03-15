@@ -29,11 +29,11 @@ jobs:
       image: ghcr.io/brokenpip3/my-pkgbuilds:main
     steps:
       - uses: actions/checkout@v4
-      - name: Get changed files in the packages folder
-        id: changed-files-specific
-        uses: tj-actions/changed-files@v45
-        with:
-          files: packages/${{ matrix.pkg }}/*
+      #- name: Get changed files in the packages folder
+      #  id: changed-files-specific
+      #  uses: tj-actions/changed-files@v45
+      #  with:
+      #    files: packages/${{ matrix.pkg }}/*
       - name: Update files
         env:
           PKG: ${{ matrix.pkg }}
