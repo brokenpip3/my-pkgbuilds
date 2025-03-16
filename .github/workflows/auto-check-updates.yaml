@@ -6,13 +6,12 @@ on:
   - cron: "10 10,22 * * *"
 
 jobs:
-
   create-pkg-list:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
     - id: matrix
       run: |
         script=$(./utils/make-matrix.sh)
@@ -30,9 +29,9 @@ jobs:
     container:
       image: ghcr.io/brokenpip3/my-pkgbuilds:main
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
-      - uses: oprypin/find-latest-tag@v1.1.2
+      - uses: oprypin/find-latest-tag@fe9a41529e004c0249b1e7ec68d11fc6b7cb0f1b # v1.1.2
         with:
           repository: ${{ matrix.repo }}
           sort-tags: true
@@ -91,7 +90,7 @@ jobs:
           makepkg --printsrcinfo > .SRCINFO
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7
         if: env.build == 'true'
         with:
             token: ${{ secrets.GITHUB_TOKEN }}
