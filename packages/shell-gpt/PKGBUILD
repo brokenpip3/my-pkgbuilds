@@ -4,7 +4,7 @@
 
 pkgname=shell-gpt
 _pkgname=${pkgname/-/_}
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=2
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT"
 arch=(any)
@@ -29,7 +29,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b858c4f88604499cbbe23908e369652895ffcbedde13afe24b05d39a2cfe2498')
+sha256sums=('38be1a8fbc4050c66bebfb22a02523c0d37915af14c7a6edb7170c3096f3fb5c')
 
 prepare() {
   cd "$_pkgname-$pkgver"
