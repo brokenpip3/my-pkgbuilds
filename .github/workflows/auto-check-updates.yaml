@@ -37,6 +37,7 @@ jobs:
           LATEST_TAG=$(git ls-remote --tags --refs "https://github.com/${{ matrix.repo }}.git" \
             | awk -F/ '{print $3}' \
             | grep -viE 'alpha|beta|rc|dev|pre' \
+            | sed 's/^[vV]//' \
             | sort -V \
             | tail -n 1)
 
