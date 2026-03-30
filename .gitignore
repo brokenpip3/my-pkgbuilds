@@ -6,3 +6,4 @@ packages/*/*
 !packages/*/*.install
 !packages/*/*.service
 !packages/*/*.config.yaml
+!packages/*/LICENSE
