@@ -44,15 +44,18 @@ jobs:
         run: |
           set -x
           sudo pacman -Sy openssh --noconfirm
+          mkdir -p ~/.ssh
+          ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
           eval `ssh-agent -s`
           ssh-add - <<< $AUR_BOT_PRIVATEKEY
           git clone ssh://aur@aur.archlinux.org/${PKG}.git
           ls -l
-          cp * ${PKG}/
+          find . -maxdepth 1 -type f -exec cp {} ${PKG}/ \;
           git -C ${PKG} config user.name "brokenpip3-bot"
           git -C ${PKG} config user.email "bronkenpip3+bot@gmail.com"
           git -C ${PKG} status
           git -C ${PKG} diff
           source ${PKG}/PKGBUILD
-          git -C ${PKG} commit -am "Automatic update to version ${pkgver}"
+          git -C ${PKG} add .
+          git -C ${PKG} commit -m "Automatic update to version ${pkgver}"
           git -C ${PKG} push origin master
